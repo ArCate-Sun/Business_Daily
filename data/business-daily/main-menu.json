@@ -1,0 +1,57 @@
+[
+  {
+	"icon": "fa-pencil",
+	"link": "/app/report",
+	"title": "报告",
+	"children": [
+	  {
+		"link": "-/my-report",
+		"title": "我的报告"
+	  },
+	  {
+		"link": "-/team-report",
+		"title": "团队报告"
+	  }
+	]
+  },
+  {
+	"icon": "fa-check",
+	"link": "/app/performance",
+	"title": "考评",
+	"children": [
+	  {
+		"link": "-/my-performance",
+		"title": "我的绩效"
+	  },
+	  {
+		"link": "-/my-check",
+		"title": "我考评的"
+	  },
+	  {
+		"link": "-/report-setting",
+		"title": "报告设置"
+	  }
+	]
+  },
+  {
+	"icon": "linecons-mail",
+	"link": "/app/email",
+	"title": "邮件"
+  },
+  {
+	"icon": "fa-user",
+	"link": "/app/account",
+	"title": "账户管理",
+	"children": [
+	  {
+		"link": "-/my-account",
+		"title": "我的账户"
+	  },
+	  {
+		"link": "-/worker-account-manage",
+		"title": "员工账户管理"
+	  }
+	]
+  }
+
+]
