@@ -1,0 +1,179 @@
+<div>
+
+	<script type="text/ng-template" id="details">
+		<div class="panel panel-default performance">
+			<div class="panel-heading"><b>日报考评详情</b> 2018-03-23 (周四)</div>
+			<table class="table">
+				<tbody>
+				<tr>
+					<td>考评人</td>
+					<td>阿猫</td>
+				</tr>
+				<tr>
+					<td>考评分</td>
+					<td>90</td>
+				</tr>
+				<tr>
+					<td>考评日期</td>
+					<td>2018-03-23</td>
+				</tr>
+				<tr>
+					<td>评语</td>
+					<td>所做工作值得肯定!<br>再接再厉!</td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div class="modal-footer performance">
+			<button type="button" class="btn btn-white" ng-click="currentModal.close();">取消</button>
+			<button type="button" class="btn btn-success" ng-click="currentModal.dismiss();">确定</button>
+		</div>
+	</script>
+
+	<script type="text/ng-template" id="appeal">
+		<div class="modal-header">
+			<button type="button" class="close" ng-click="currentModal.close();" aria-hidden="true">&times;</button>
+			<h4 class="modal-title">申诉理由</h4>
+		</div>
+
+		<div class="modal-body appeal">
+			<textarea class="form-control autogrow" rows="10"></textarea>
+		</div>
+
+		<div class="modal-footer">
+			<button type="button" class="btn btn-white" ng-click="currentModal.close();">取消</button>
+			<button type="button" class="btn btn-success" ng-click="currentModal.dismiss();">确定</button>
+		</div>
+
+	</script>
+
+	<style>
+		.performance-operation-button {
+			color: #4db3ff;
+			cursor: pointer;
+		}
+		.performance-operation-button.disabled {
+			color: #bfcbd9;
+		}
+		.performance-operation-button.disabled {
+			cursor: not-allowed;
+		}
+		.panel.performance {
+			margin-bottom: 0;
+		}
+		.modal-footer.performance {
+			padding: 20px 30px !important;
+			padding-top: 0 !important;
+			border: 0;
+		}
+		.modal-body.appeal{
+			padding: 20px 10px !important;
+		}
+		.modal-body.appeal textarea {
+			height: auto;
+		}
+	</style>
+
+	<!-- 头栏 -->
+	<div class="row">
+
+		<div class="col-sm-12">
+
+			<div class="panel panel-default">
+
+				<div class="vertical-top">
+					<table width="100%" style="line-height: 32px;">
+						<tr>
+							<td style="width: 40%;">
+								<label class="col-sm-2 control-label" style="margin: 0; padding: 0;">选择日期：</label>
+
+								<div class="col-sm-8">
+									<input type="text" class="form-control daterange" />
+								</div>
+							</td>
+							<td style="width:20%; text-align: center">
+								<span style="font-size: 120%;">我的日报考评</span>
+							</td>
+							<td style="width: 40%;">
+								<div class="btn-group" data-toggle="buttons" style="float: right;">
+									<label class="btn btn-white" style="margin: 0;">日报</label>
+									<label class="btn btn-white" style="margin: 0;">周报</label>
+									<label class="btn btn-white" style="margin: 0;">月报</label>
+									<label class="btn btn-white" style="margin: 0;">季报</label>
+									<label class="btn btn-white" style="margin: 0;">半年报</label>
+									<label class="btn btn-white" style="margin: 0;">年报</label>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<!-- 绩效面板 -->
+	<div class="panel panel-default">
+		<div class="panel-body">
+
+			<div class="row">
+				<div class="col-sm-12">
+
+					<table class="table table-bordered table-striped">
+						<thead>
+						<tr>
+							<th>日期</th>
+							<th>状态</th>
+							<th>考评分</th>
+							<th>考评人</th>
+							<th>考评时间</th>
+							<th>操作</th>
+						</tr>
+						</thead>
+
+						<tbody>
+						<tr>
+							<td>2018-03-23(周五)</td>
+							<td>无日报</td>
+							<td>90</td>
+							<td>阿猫</td>
+							<td>2018-03-23</td>
+							<td>
+								<a type="button" class="performance-operation-button" ng-click="openModal('details', 'lg');">详情</a>
+								<a type="button" class="performance-operation-button" ng-click="openModal('appeal', 'lg');">申诉</a>
+							</td>
+						</tr>
+						<tr>
+							<td>2018-03-23(周五)</td>
+							<td>无日报</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+							<td>
+								<a href="#" class="performance-operation-button disabled">详情</a>
+								<a href="#" class="performance-operation-button disabled">申诉</a>
+							</td>
+						</tr>
+						<tr>
+							<td>2018-03-23(周五)</td>
+							<td>无日报</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+							<td>
+								<a href="#" class="performance-operation-button disabled">详情</a>
+								<a href="#" class="performance-operation-button disabled">申诉</a>
+							</td>
+						</tr>
+						</tbody>
+					</table>
+
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>

@@ -1,0 +1,89 @@
+
+<div id="chat" class="fixed" ng-controller="ChatCtrl"><!-- start: Chat Section -->
+	
+	<div class="chat-inner">
+	
+		
+		<h2 class="chat-header">
+			<a  href="" class="chat-close" ng-click="chatToggle()">
+				<i class="fa-plus-circle rotate-45deg"></i>
+			</a>
+			
+			临时会话
+			<span class="badge badge-success is-hidden">0</span>
+		</h2>
+
+		<script type="text/javascript">
+		// Here is just a sample how to open chat conversation box
+		jQuery(document).ready(function($)
+		{
+			var $chat_conversation = $(".chat-conversation");
+
+			$(".chat-group a").on('click', function(ev)
+			{
+				ev.preventDefault();
+
+				$chat_conversation.toggleClass('is-open');
+
+				$(".chat-conversation textarea").trigger('autosize.resize').focus();
+			});
+
+			$(".conversation-close").on('click', function(ev)
+			{
+				ev.preventDefault();
+				$chat_conversation.removeClass('is-open');
+			});
+		});
+		</script>
+
+
+		<div class="chat-group">
+			<strong>研发部</strong>
+
+			<a href="#"><span class="user-status is-online"></span> <em>张三</em></a>
+			<a href="#"><span class="user-status is-idle"></span> <em>王五</em></a>
+			<a href="#"><span class="user-status is-busy"></span> <em>赵六</em></a>
+			<a href="#"><span class="user-status is-offline"></span> <em>李四</em></a>
+		</div>
+
+	</div>
+
+	<!-- conversation template -->
+	<div class="chat-conversation">
+
+		<div class="conversation-header">
+			<a href="#" class="conversation-close">
+				&times;
+			</a>
+
+			<span class="user-status is-online"></span>
+			<span class="display-name">张三</span>
+			<small>在线</small>
+		</div>
+
+		<ul class="conversation-body">
+			<li>
+				<span class="user">张三</span>
+				<span class="time">09:00</span>
+				<p>阿猫，咱们项目的性能测试达标的吗？</p>
+			</li>
+			<li class="odd">
+				<span class="user">阿猫</span>
+				<span class="time">09:25</span>
+				<p>没有，比计划中的要差一些，还需要进一步的优化。</p>
+			</li>
+			<li>
+				<span class="user">张三</span>
+				<span class="time">09:26</span>
+				<p>你有什么好意见吗?</p>
+			</li>
+		</ul>
+
+		<div class="chat-textarea">
+			<textarea class="form-control autogrow" placeholder="输入要发送的消息..."></textarea>
+		</div>
+
+	</div>
+	
+<!-- end: Chat Section -->
+</div>

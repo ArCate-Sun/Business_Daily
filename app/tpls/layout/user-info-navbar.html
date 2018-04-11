@@ -1,0 +1,167 @@
+<nav class="navbar user-info-navbar" ng-class="{'mobile-is-visible': layoutOptions.userInfoNavVisible}"
+	 ng-click="mobileUserInfoToggle()" role="navigation"><!-- User Info, Notifications and Menu Bar -->
+
+	<!-- Left links for user info navbar -->
+	<ul class="user-info-menu left-links list-inline list-unstyled">
+
+		<li class="hidden-sm hidden-xs">
+			<a href="" ng-click="sidebarToggle()">
+				<i class="fa-bars"></i>
+			</a>
+		</li>
+
+		<li class="dropdown hover-line">
+			<a href="" class="dropdown-toggle" data-toggle="dropdown">
+				<i class="fa-envelope-o"></i>
+				<span class="badge badge-green">2</span>
+			</a>
+
+			<ul class="dropdown-menu messages">
+				<li>
+
+					<ul class="dropdown-menu-list list-unstyled ps-scrollbar">
+
+						<li class="active"><!-- "active" class means message is unread -->
+							<a href="#">
+								<span class="line">
+									<strong>老板 - 阿猫</strong>
+									<span class="light small">- 昨天</span>
+								</span>
+
+								<span class="line desc small">
+									关于发放年终奖的通知
+								</span>
+							</a>
+						</li>
+
+						<li class="active">
+							<a href="#">
+								<span class="line">
+									<strong>老板 - 阿猫</strong>
+									<span class="light small">- 2天前</span>
+								</span>
+
+								<span class="line desc small">
+									关于日报收发系统正式使用的通知
+								</span>
+							</a>
+						</li>
+
+						<li>
+							<a href="#">
+								<span class="line">
+									<strong>人事部 - 张三</strong>
+									<span class="light small">- 2 天前</span>
+								</span>
+
+								<span class="line desc small">
+									关于部分人员涨薪的决定.
+								</span>
+							</a>
+						</li>
+
+						<li>
+							<a href="#">
+								<span class="line">
+									<strong>人事部 - 张三</strong>
+									<span class="light small">- 5 天前</span>
+								</span>
+
+								<span class="line desc small">
+									新同事张三已上岗.
+								</span>
+							</a>
+						</li>
+
+					</ul>
+
+				</li>
+
+				<li class="external">
+					<a href="mailbox-main.html">
+						<span>查看所有邮件</span>
+					</a>
+				</li>
+			</ul>
+		</li>
+
+		<li class="dropdown hover-line">
+			<a href="" class="dropdown-toggle" data-toggle="dropdown">
+				<i class="fa-pencil-square-o"></i>
+			</a>
+
+			<ul class="dropdown-menu notifications">
+				<li class="top">
+					<p class="small" style="border-bottom-width: 0; padding-bottom: 0; font-size: 120%; color: #333333;">
+						笔记
+					</p>
+				</li>
+
+				<li>
+					<ul class="dropdown-menu-list list-unstyled ps-scrollbar">
+						<li class="active notification-success" style="padding: 10px;">
+							<textarea class="form-control autogrow" placeholder="随时写下工作笔记" style="color: #555555;"></textarea>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+
+	</ul>
+
+
+	<!-- Right links for user info navbar -->
+	<ul class="user-info-menu right-links list-inline list-unstyled">
+
+		<li class="dropdown user-profile">
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+				<img src="data/images/ArCate.jpg" alt="user-image" class="img-circle img-inline userpic-32" width="28"/>
+				<span>
+					阿猫_ACat
+					<i class="fa-angle-down"></i>
+				</span>
+			</a>
+
+			<ul class="dropdown-menu user-profile-menu list-unstyled">
+				<li>
+					<a href="#edit-profile">
+						<i class="fa-edit"></i>
+						新邮件
+					</a>
+				</li>
+				<li>
+					<a href="#settings">
+						<i class="fa-wrench"></i>
+						设置
+					</a>
+				</li>
+				<li>
+					<a href="#profile">
+						<i class="fa-user"></i>
+						个人资料
+					</a>
+				</li>
+				<li>
+					<a href="#help">
+						<i class="fa-info"></i>
+						帮助
+					</a>
+				</li>
+				<li class="last">
+					<a href="extra-lockscreen.html">
+						<i class="fa-lock"></i>
+						登出
+					</a>
+				</li>
+			</ul>
+		</li>
+
+		<li>
+			<a href="" ng-click="chatToggle();" data-toggle="chat">
+				<i class="fa-comments-o"></i>
+			</a>
+		</li>
+
+	</ul>
+
+</nav>

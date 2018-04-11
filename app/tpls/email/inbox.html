@@ -1,0 +1,237 @@
+<style>
+	.mail-operation {
+		margin-left: 10px;
+	}
+	.mail-operation a {
+		margin-left: 10px;
+		cursor: pointer;
+	}
+	.info {
+		color: #4db3ff !important;
+	}
+	.danger {
+		color: #d5080f !important;
+	}
+</style>
+
+<section class="mailbox-env">
+
+	<div class="row">
+
+		<!-- Inbox emails -->
+		<div class="col-sm-9 mailbox-right">
+
+			<div class="mail-env">
+
+				<script type="text/javascript">
+					jQuery(document).ready(function($)
+					{
+						var $state = $(".mail-table thead input[type='checkbox'], .mail-table tfoot input[type='checkbox']"),
+							$chcks = $(".mail-table tbody input[type='checkbox']");
+
+						// Script to select all checkboxes
+						$state.on('change', function(ev)
+						{
+							if($state.is(':checked'))
+							{
+								$chcks.prop('checked', true).trigger('change');
+							}
+							else
+							{
+								$chcks.prop('checked', false).trigger('change');
+							}
+						});
+
+						// Row Highlighting
+						$chcks.each(function(i, el)
+						{
+							var $tr = $(el).closest('tr');
+
+							$(this).on('change', function(ev)
+							{
+								$tr[$(this).is(':checked') ? 'addClass' : 'removeClass']('highlighted');
+							});
+						});
+
+						// Stars
+						$(".mail-table .star").on('click', function(ev)
+						{
+							ev.preventDefault();
+
+							if( ! $(this).hasClass('starred'))
+							{
+								$(this).addClass('starred').find('i').attr('class', 'fa-star');
+							}
+							else
+							{
+								$(this).removeClass('starred').find('i').attr('class', 'fa-star-o');
+							}
+						});
+					});
+				</script>
+
+				<!-- mail table -->
+				<table class="table mail-table">
+
+					<!-- mail table header -->
+					<thead>
+						<tr>
+							<th class="col-cb">
+								<input type="checkbox" class="cbr" />
+							</th>
+							<th colspan="4" class="col-header-options">
+
+								<div class="mail-select-options">选取全部</div>
+
+								<div class="mail-select-options mail-operation">
+									<a class="info">标记已读</a>
+									<a class="danger">删除</a>
+								</div>
+
+								<div class="mail-pagination">
+									显示第 <strong>1 到 20</strong> 封邮件, 共 <strong>3</strong> 封邮件.
+
+									<div class="next-prev">
+										<a href=""><i class="fa-angle-left"></i></a>
+										<a href=""><i class="fa-angle-right"></i></a>
+									</div>
+								</div>
+							</th>
+						</tr>
+					</thead>
+
+					<!-- mail table footer -->
+					<tfoot>
+						<tr>
+							<th class="col-cb">
+								<input type="checkbox" class="cbr" />
+							</th>
+							<th colspan="4" class="col-header-options">
+
+								<div class="mail-select-options">选取全部</div>
+
+								<div class="mail-select-options mail-operation">
+									<a class="info">标记已读</a>
+									<a class="danger">删除</a>
+								</div>
+
+								<div class="mail-pagination">
+									显示第 <strong>1 到 20</strong> 封邮件, 共 <strong>3</strong> 封邮件.
+
+									<div class="next-prev">
+										<a href=""><i class="fa-angle-left"></i></a>
+										<a href=""><i class="fa-angle-right"></i></a>
+									</div>
+								</div>
+							</th>
+						</tr>
+					</tfoot>
+
+					<!-- email list -->
+					<tbody>
+
+						<tr class="unread">
+							<td class="col-cb">
+								<div class="checkbox checkbox-replace">
+									<input type="checkbox" class="cbr" />
+								</div>
+							</td>
+							<td class="col-name">
+								<a href="#/app/email-view" class="col-name">老板 - 王五</a>
+							</td>
+							<td class="col-subject">
+								<a href="#/app/email-view">
+									关于工作的几点通知
+								</a>
+							</td>
+							<td class="col-options hidden-sm hidden-xs"></td>
+							<td class="col-time">08:40</td>
+						</tr>
+
+						<tr class="unread"><!-- new email class: unread -->
+							<td class="col-cb">
+								<div class="checkbox checkbox-replace">
+									<input type="checkbox" class="cbr" />
+								</div>
+							</td>
+							<td class="col-name">
+								<a href="#/app/email-view" class="col-name">人事部 - 张三</a>
+							</td>
+							<td class="col-subject">
+								<a href="#/app/email-view">
+									重置你的账号密码
+								</a>
+							</td>
+							<td class="col-options hidden-sm hidden-xs">
+								<a href="#/app/email-view"><i class="linecons-attach"></i></a>
+							</td>
+							<td class="col-time">11:17</td>
+						</tr>
+
+						<tr>
+							<td class="col-cb">
+								<div class="checkbox checkbox-replace">
+									<input type="checkbox" class="cbr" />
+								</div>
+							</td>
+							<td class="col-name">
+								<a href="#/app/email-view" class="col-name">研发部 - 赵四</a>
+							</td>
+							<td class="col-subject">
+								<a href="#/app/email-view">
+									关于项目的资料
+								</a>
+							</td>
+							<td class="col-options hidden-sm hidden-xs"></td>
+							<td class="col-time">昨天</td>
+						</tr>
+
+					</tbody>
+
+				</table>
+
+			</div>
+
+		</div>
+
+		<!-- 邮箱侧边栏 -->
+		<div class="col-sm-3 mailbox-left">
+
+			<div class="mailbox-sidebar">
+
+				<a href="#/app/email-edit" class="btn btn-block btn-secondary btn-icon btn-icon-standalone btn-icon-standalone-right">
+					<i class="linecons-mail"></i>
+					<span>写邮件</span>
+				</a>
+
+				<ul class="list-unstyled mailbox-list">
+					<li class="active">
+						<a href="#app/email-inbox">
+							收件箱
+							<span class="badge badge-success pull-right">5</span>
+						</a>
+					</li>
+					<li>
+						<a href="#app/email-sent">
+							发件箱
+						</a>
+					</li>
+					<li>
+						<a href="#app/email-drafts">
+							草稿箱
+						</a>
+					</li>
+					<li>
+						<a href="#app/email-trash">
+							垃圾箱
+						</a>
+					</li>
+				</ul>
+
+			</div>
+
+		</div>
+
+	</div>
+
+</section>

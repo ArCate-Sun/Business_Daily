@@ -1,0 +1,132 @@
+
+<script type="text/ng-template" id="modal-5">
+<div class="modal-header">
+	<button type="button" class="close" ng-click="currentModal.close();" aria-hidden="true">&times;</button>
+	<h4 class="modal-title">审计: 张三于 2018-03-23 日的日报</h4>
+</div>
+
+<div class="modal-body">
+
+	<div class="row">
+
+		<form role="form" class="form-horizontal">
+
+			<div class="form-group">
+				<label class="col-sm-2 control-label">评分</label>
+
+				<div class="col-sm-9">
+					<input type="text" class="form-control">
+				</div>
+			</div>
+
+			<div class="form-group-separator"></div>
+
+			<div class="form-group">
+				<label class="col-sm-2 control-label">评价</label>
+
+				<div class="col-sm-9">
+					<textarea class="form-control autogrow" cols="5"></textarea>
+				</div>
+			</div>
+
+		</form>
+
+	</div>
+
+</div>
+
+<div class="modal-footer">
+	<button type="button" class="btn btn-white" ng-click="currentModal.close();">取消</button>
+	<button type="button" class="btn btn-success" ng-click="currentModal.dismiss();">确定</button>
+</div>
+</script>
+
+<div>
+	<!-- 头栏 -->
+	<div class="row">
+
+		<div class="col-sm-12">
+
+			<div class="panel panel-default">
+
+				<div class="vertical-top">
+					<table width="100%" style="line-height: 32px;">
+						<tr>
+							<td style="width: 40%;">
+								<label class="col-sm-2 control-label" style="margin: 0; padding: 0;">选择日期：</label>
+
+								<div class="col-sm-8">
+									<input type="text" class="form-control daterange" />
+								</div>
+							</td>
+							<td style="width:20%; text-align: center">
+								<span style="font-size: 120%;">我的日报</span>
+							</td>
+							<td style="width: 40%;">
+								<div class="btn-group" data-toggle="buttons" style="float: right;">
+									<label class="btn btn-white" style="margin: 0;">日报</label>
+									<label class="btn btn-white" style="margin: 0;">周报</label>
+									<label class="btn btn-white" style="margin: 0;">月报</label>
+									<label class="btn btn-white" style="margin: 0;">季报</label>
+									<label class="btn btn-white" style="margin: 0;">半年报</label>
+									<label class="btn btn-white" style="margin: 0;">年报</label>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<div class="row">
+		<div class="col-sm-12">
+			<!-- Colored panel, remember to add "panel-color" before applying the color -->
+			<div class="panel panel-color panel-gray"><!-- Add class "collapsed" to minimize the panel -->
+				<div class="panel-heading">
+					<h3 class="panel-title" style="color: black;">[昨日] 2018-03-23 | 张三</h3>
+					<div class="panel-options">
+						<a href="" style="margin: 0; color: green; font-size: 120%;" ng-click="openModal('modal-5', 'lg');">
+							审核
+						</a>
+					</div>
+				</div>
+
+				<div class="panel-body">
+
+					<p style="color:black; font-weight: bold; font-size: 110%;">今日工作记录</p>
+					<p style="padding-left: 20px;">今天我完成了模块C的开发</p>
+
+					<p style="color:black; font-weight: bold; font-size: 110%;">需协调事项</p>
+					<p style="padding-left: 20px;">暂无</p>
+
+					<p style="color:black; font-weight: bold; font-size: 110%;">其他情况反映</p>
+					<p style="padding-left: 20px;">暂无</p>
+
+					<p style="color:black; font-weight: bold; font-size: 110%;">明日计划</p>
+					<p style="padding-left: 20px;">计划明天完成模块A的开发</p>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-12">
+			<!-- Colored panel, remember to add "panel-color" before applying the color -->
+			<div class="panel panel-color panel-gray" style="padding-bottom: 0;"><!-- Add class "collapsed" to minimize the panel -->
+				<div class="panel-heading">
+					<h3 class="panel-title" style="color: black;">[前日] 2018-03-24 | 李四</h3>
+					<div class="panel-options">
+						<p style="margin: 0; color: green; font-size: 120%;">
+							审核
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
