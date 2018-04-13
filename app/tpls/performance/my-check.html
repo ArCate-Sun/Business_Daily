@@ -1,16 +1,14 @@
 
-<script type="text/ng-template" id="modal-5">
-<div class="modal-header">
+<!-- start: 考评 -->
+<script type="text/ng-template" id="check">
+<div class="modal-header check">
 	<button type="button" class="close" ng-click="currentModal.close();" aria-hidden="true">&times;</button>
 	<h4 class="modal-title">审计: 张三于 2018-03-23 日的日报</h4>
 </div>
 
-<div class="modal-body">
-
+<div class="modal-body check">
 	<div class="row">
-
 		<form role="form" class="form-horizontal">
-
 			<div class="form-group">
 				<label class="col-sm-2 control-label">评分</label>
 
@@ -18,9 +16,7 @@
 					<input type="text" class="form-control">
 				</div>
 			</div>
-
 			<div class="form-group-separator"></div>
-
 			<div class="form-group">
 				<label class="col-sm-2 control-label">评价</label>
 
@@ -28,18 +24,16 @@
 					<textarea class="form-control autogrow" cols="5"></textarea>
 				</div>
 			</div>
-
 		</form>
-
 	</div>
-
 </div>
 
-<div class="modal-footer">
+<div class="modal-footer check">
 	<button type="button" class="btn btn-white" ng-click="currentModal.close();">取消</button>
 	<button type="button" class="btn btn-success" ng-click="currentModal.dismiss();">确定</button>
 </div>
 </script>
+<!-- end: 考评 -->
 
 <div>
 	<!-- 头栏 -->
@@ -89,8 +83,8 @@
 				<div class="panel-heading">
 					<h3 class="panel-title" style="color: black;">[昨日] 2018-03-23 | 张三</h3>
 					<div class="panel-options">
-						<a href="" style="margin: 0; color: green; font-size: 120%;" ng-click="openModal('modal-5', 'lg');">
-							审核
+						<a href="" style="margin: 0; color: green; font-size: 120%;" ng-click="openModal('check');">
+							考评
 						</a>
 					</div>
 				</div>
@@ -121,9 +115,9 @@
 				<div class="panel-heading">
 					<h3 class="panel-title" style="color: black;">[前日] 2018-03-24 | 李四</h3>
 					<div class="panel-options">
-						<p style="margin: 0; color: green; font-size: 120%;">
-							审核
-						</p>
+						<a href="" style="margin: 0; color: green; font-size: 120%;" ng-click="openModal('check');">
+							考评
+						</a>
 					</div>
 				</div>
 			</div>

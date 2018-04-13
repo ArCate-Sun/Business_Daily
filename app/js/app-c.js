@@ -23,30 +23,26 @@ var app = angular.module('business-daily', [
 
 	'oc.lazyLoad',
 
-	'daily.login',
-	'daily.layout',
-
 	'xenon.controllers',
 	'xenon.directives',
-	'xenon.services',
+	'xenon.factory',
+	'daily.services',
 
 	// Added in v1.3
 	'FBAngular'
 ]);
 
-app.run(function()
-{
-	// Page Loading Overlay
+app.run(function () {
+	// 页面加载遮罩层
 	public_vars.$pageLoadingOverlay = jQuery('.page-loading-overlay');
 
-	jQuery(window).load(function()
-	{
+	jQuery(window).load(function () {
 		public_vars.$pageLoadingOverlay.addClass('loaded');
 	})
 });
 
 
-app.config(function($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, ASSETS){
+app.config(function ($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, ASSETS) {
 
 	$urlRouterProvider.otherwise('/app/index');
 
@@ -54,12 +50,13 @@ app.config(function($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, ASS
 	$stateProvider.state('login', {
 		url: '/login',
 		templateUrl: appHelper.templatePath('login'),
+		controller: 'LoginCtrl',
 		resolve: {
 			resources: function ($ocLazyLoad) {
 				return $ocLazyLoad.load([
 					ASSETS.forms.jQueryValidate
 				]);
-			}
+			},
 		}
 	});
 
@@ -68,13 +65,14 @@ app.config(function($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, ASS
 		abstract: true,
 		url: '/app',
 		templateUrl: appHelper.templatePath('layout/app-body'),
-		controller: 'PageFrameworkCtrl'
+		controller: 'app'
 	});
 
 	// 首页 (我的报告)
 	$stateProvider.state('app.index', {
+		abstract: true,
 		url: '/index',
-		templateUrl: appHelper.templatePath('index'),
+		templateUrl: appHelper.templatePath('report/my-report'),
 		resolve: {
 			resources: function ($ocLazyLoad) {
 				return $ocLazyLoad.load([
@@ -85,126 +83,154 @@ app.config(function($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, ASS
 		}
 	});
 
-	$stateProvider.
-		// 报告
-		state('app.report-my-report', {
-			url: '/report-my-report',
-			templateUrl: appHelper.templatePath('report/my-report'),
-			resolve: {
-				resources: function ($ocLazyLoad) {
-					return $ocLazyLoad.load([
-						ASSETS.core.moment,
-						ASSETS.forms.daterangepicker
-					]);
-				}
+	// 我的报告
+	$stateProvider.state('app.report-my-report', {
+		url: '/report-my-report',
+		templateUrl: appHelper.templatePath('report/my-report'),
+		resolve: {
+			resources: function ($ocLazyLoad) {
+				return $ocLazyLoad.load([
+					ASSETS.core.moment,
+					ASSETS.forms.daterangepicker
+				]);
 			}
-		}).
-		state('app.report-team-report', {
-			url: '/report-team-report',
-			templateUrl: appHelper.templatePath('report/team-report'),
-			resolve: {
-				resources: function ($ocLazyLoad) {
-					return $ocLazyLoad.load([
-						ASSETS.core.moment,
-						ASSETS.forms.daterangepicker
-					]);
-				}
+		}
+	});
+	// 团队报告
+	$stateProvider.state('app.report-team-report', {
+		url: '/report-team-report',
+		templateUrl: appHelper.templatePath('report/team-report'),
+		resolve: {
+			resources: function ($ocLazyLoad) {
+				return $ocLazyLoad.load([
+					ASSETS.core.moment,
+					ASSETS.forms.daterangepicker
+				]);
 			}
-		}).
-		// 考评
-		state('app.performance-my-performance', {
-			url: '/performance-my-performance',
-			templateUrl: appHelper.templatePath('performance/my-performance'),
-			controller: 'UIModalsCtrl',
-			resolve: {
-				resources: function ($ocLazyLoad) {
-					return $ocLazyLoad.load([
-						ASSETS.core.moment,
-						ASSETS.forms.daterangepicker
-					]);
-				}
+		}
+	});
+
+	// 我的绩效
+	$stateProvider.state('app.performance-my-performance', {
+		url: '/performance-my-performance',
+		templateUrl: appHelper.templatePath('performance/my-performance'),
+		controller: 'UIModalsCtrl',
+		resolve: {
+			resources: function ($ocLazyLoad) {
+				return $ocLazyLoad.load([
+					ASSETS.core.moment,
+					ASSETS.forms.daterangepicker
+				]);
 			}
-		}).
-		state('app.performance-my-check', {
-			url: '/performance-my-check',
-			templateUrl: appHelper.templatePath('performance/my-check'),
-			controller: 'UIModalsCtrl',
-			resolve: {
-				resources: function ($ocLazyLoad) {
-					return $ocLazyLoad.load([
-						ASSETS.core.moment,
-						ASSETS.forms.daterangepicker
-					]);
-				}
+		}
+	});
+	// 我的考评
+	$stateProvider.state('app.performance-my-check', {
+		url: '/performance-my-check',
+		templateUrl: appHelper.templatePath('performance/my-check'),
+		controller: 'UIModalsCtrl',
+		resolve: {
+			resources: function ($ocLazyLoad) {
+				return $ocLazyLoad.load([
+					ASSETS.core.moment,
+					ASSETS.forms.daterangepicker
+				]);
 			}
-		}).
-		state('app.performance-report-setting', {
-			url: '/performance-report-setting',
-			templateUrl: appHelper.templatePath('performance/report-setting'),
-			controller: 'UIModalsCtrl',
-			resolve: {
-				resources: function ($ocLazyLoad) {
-					return $ocLazyLoad.load([
-						ASSETS.core.moment,
-						ASSETS.forms.daterangepicker
-					]);
-				}
+		}
+	});
+	// 报告设置
+	$stateProvider.state('app.performance-report-setting', {
+		url: '/performance-report-setting',
+		templateUrl: appHelper.templatePath('performance/report-setting'),
+		controller: 'UIModalsCtrl',
+		resolve: {
+			resources: function ($ocLazyLoad) {
+				return $ocLazyLoad.load([
+					ASSETS.core.moment,
+					ASSETS.forms.daterangepicker
+				]);
 			}
-		}).
-		// 邮箱
-		state('app.email', {
-			url: '/email',
-			templateUrl: appHelper.templatePath('email/inbox')
-		}).
-		state('app.email-view', {
-			url: '/email-view',
-			templateUrl: appHelper.templatePath('email/view'),
-		}).
-		state('app.email-edit', {
-			url: '/email-edit',
-			templateUrl: appHelper.templatePath('email/edit'),
-			resolve: {
-				bootstrap: function($ocLazyLoad){
-					return $ocLazyLoad.load([
-						ASSETS.core.bootstrap,
-					]);
-				},
-				bootstrapWysihtml5: function($ocLazyLoad){
-					return $ocLazyLoad.load([
-						ASSETS.forms.bootstrapWysihtml5,
-					]);
-				},
+		}
+	});
+
+	// 邮箱 (收件箱)
+	$stateProvider.state('app.email', {
+		url: '/email',
+		templateUrl: appHelper.templatePath('email/inbox')
+	});
+	// 收件箱
+	$stateProvider.state('app.email-inbox', {
+		url: '/email/inbox',
+		templateUrl: appHelper.templatePath('email/inbox')
+	});
+	// 浏览邮件
+	$stateProvider.state('app.email-view', {
+		url: '/email-view',
+		templateUrl: appHelper.templatePath('email/view'),
+	});
+	// 编辑邮件
+	$stateProvider.state('app.email-edit', {
+		url: '/email-edit',
+		templateUrl: appHelper.templatePath('email/edit'),
+		resolve: {
+			bootstrap: function ($ocLazyLoad) {
+				return $ocLazyLoad.load([
+					ASSETS.core.bootstrap,
+				]);
+			},
+			bootstrapWysihtml5: function ($ocLazyLoad) {
+				return $ocLazyLoad.load([
+					ASSETS.forms.bootstrapWysihtml5,
+				]);
+			},
+		}
+	});
+
+	// 我的账户
+	$stateProvider.state('app.account-my-account', {
+		url: '/account-my-account',
+		templateUrl: appHelper.templatePath('account/my-account'),
+	});
+	// 员工账户管理
+	$stateProvider.state('app.account-account-management', {
+		url: '/account-account-management',
+		templateUrl: appHelper.templatePath('account/account-management'),
+		controller: 'UIModalsCtrl',
+		resolve: {
+			deps: function ($ocLazyLoad) {
+				return $ocLazyLoad.load([
+					ASSETS.tables.datatables,
+				]);
 			}
-		}).
-		state('app.mailbox-message', {
-			url: '/mailbox-message',
-			templateUrl: appHelper.templatePath('mailbox/message'),
-		}).
-		// 账户管理
-		state('app.account-my-account', {
-			url: '/account-my-account',
-			templateUrl: appHelper.templatePath('account/my-account'),
-			resolve: {
-				resources: function ($ocLazyLoad) {
-					return $ocLazyLoad.load([
-						ASSETS.core.moment,
-						ASSETS.forms.daterangepicker
-					]);
-				}
+		}
+	});
+	// 部门管理
+	$stateProvider.state('app.account-development-management', {
+		url: '/account-development-management',
+		templateUrl: appHelper.templatePath('account/development-management'),
+		controller: 'UIModalsCtrl',
+		resolve: {
+			deps: function ($ocLazyLoad) {
+				return $ocLazyLoad.load([
+					ASSETS.tables.datatables,
+					ASSETS.tables.rwd,
+				]);
 			}
-		}).
-		state('app.account-worker-account-manage', {
-			url: '/account-worker-account-manage',
-			templateUrl: appHelper.templatePath('account/worker-account-manage'),
-			resolve: {
-				resources: function ($ocLazyLoad) {
-					return $ocLazyLoad.load([
-						ASSETS.core.moment,
-						ASSETS.forms.daterangepicker
-					]);
-				}
+		}
+	});
+	// 岗位管理
+	$stateProvider.state('app.account-station-management', {
+		url: '/account-station-management',
+		templateUrl: appHelper.templatePath('account/station-management'),
+		controller: 'UIModalsCtrl',
+		resolve: {
+			deps: function ($ocLazyLoad) {
+				return $ocLazyLoad.load([
+					ASSETS.tables.datatables,
+				]);
 			}
-		});
+		}
+	});
 });
 
 
@@ -346,7 +372,5 @@ app.constant('ASSETS', {
 		]
 	},
 
-	'email': {
-
-	}
+	'email': {}
 });

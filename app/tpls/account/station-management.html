@@ -1,0 +1,245 @@
+
+<!-- start: 添加框 -->
+<script type="text/ng-template" id="new">
+	<div class="modal-header new">
+		<button type="button" class="close" ng-click="currentModal.close();" aria-hidden="true">&times;</button>
+		<h4 class="modal-title">添加新岗位</h4>
+	</div>
+
+	<div class="modal-body new">
+		<form role="form" class="form-horizontal" role="form">
+			<div class="form-group">
+				<label class="col-sm-2 control-label">岗位名称</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label">岗位描述</label>
+				<div class="col-sm-10">
+					<textarea class="form-control autogrow"></textarea>
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<div class="modal-footer new">
+		<button type="button" class="btn btn-white" ng-click="currentModal.close();">取消</button>
+		<button type="button" class="btn btn-success" ng-click="currentModal.dismiss();">确定</button>
+	</div>
+</script>
+<!-- end: 添加框 -->
+
+<!-- start: 编辑框 -->
+<script type="text/ng-template" id="edit">
+	<div class="modal-header edit">
+		<button type="button" class="close" ng-click="currentModal.close();" aria-hidden="true">&times;</button>
+		<h4 class="modal-title">编辑 <b>项目经理</b> 岗位</h4>
+	</div>
+
+	<div class="modal-body edit">
+		<form role="form" class="form-horizontal" role="form">
+			<div class="form-group">
+				<label class="col-sm-2 control-label">岗位ID</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" disabled value="30001">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label">岗位名称</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" value="项目经理">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label">岗位描述</label>
+				<div class="col-sm-10">
+					<textarea class="form-control autogrow">1.作为项目组的领导人和决策人，确立组员的分工职责。<br>
+					2.制订项目工作计划，及时与客户沟通。<br>
+					3.对潜在的项目风险进行预测和分级,并制定调整计划和应急策略。<br>
+					4.起草项目拨款申请，进行项目成本控制，定期跟踪成本及利润状态，并向公司汇报。
+					</textarea>
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<div class="modal-footer edit">
+		<button type="button" class="btn btn-white" ng-click="currentModal.close();">取消</button>
+		<button type="button" class="btn btn-success" ng-click="currentModal.dismiss();">确定</button>
+	</div>
+</script>
+<!-- end: 编辑框 -->
+
+<!-- start: 详细信息框 -->
+<script type="text/ng-template" id="view">
+	<div class="modal-header view">
+		<button type="button" class="close" ng-click="currentModal.close();" aria-hidden="true">&times;</button>
+		<h4 class="modal-title"><b>项目经理</b> 的详细信息</h4>
+	</div>
+
+	<div class="modal-body view">
+
+		<table class="table table-hover">
+			<tbody>
+			<tr>
+				<td>岗位ID</td>
+				<td>30001</td>
+			</tr>
+
+			<tr>
+				<td>岗位名称</td>
+				<td>项目经理</td>
+			</tr>
+
+			<tr>
+				<td>岗位描述</td>
+				<td>
+					1.作为项目组的领导人和决策人，确立组员的分工职责。<br>
+					2.制订项目工作计划，及时与客户沟通。<br>
+					3.对潜在的项目风险进行预测和分级,并制定调整计划和应急策略。<br>
+					4.起草项目拨款申请，进行项目成本控制，定期跟踪成本及利润状态，并向公司汇报。
+				</td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="modal-footer view">
+		<button type="button" class="btn btn-white" ng-click="currentModal.close();">取消</button>
+		<button type="button" class="btn btn-success" ng-click="currentModal.dismiss();">确定</button>
+	</div>
+</script>
+<!-- end: 详细信息框 -->
+
+<!-- start: 删除框 -->
+<script type="text/ng-template" id="delete">
+	<div class="modal-header delete">
+		<button type="button" class="close" ng-click="currentModal.close();" aria-hidden="true">&times;</button>
+		<h4 class="modal-title">删除 <b>项目经理</b> 岗位</h4>
+	</div>
+
+	<div class="modal-body delete">
+		确定删除 <b>项目经理</b> 岗位?
+		<br>
+		请注意, 该操作无法被恢复!
+	</div>
+
+	<div class="modal-footer delete">
+		<button type="button" class="btn btn-white" ng-click="currentModal.close();">关闭</button>
+		<button type="button" class="btn btn-danger" ng-click="currentModal.dismiss();">删除</button>
+	</div>
+</script>
+<!-- end: 删除框 -->
+
+<style>
+	.view.modal-body table {
+		margin: 0;
+	}
+	.view.modal-body table td {
+		border: 0;
+	}
+	.view.modal-body table td:nth-child(1) {
+		width: 30%;
+	}
+</style>
+
+<div>
+	<!-- start: 头栏 -->
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="panel panel-default">
+				<div class="vertical-top">
+					<table width="100%" style="line-height: 32px;">
+						<tr>
+							<td style="width: 40%;">
+								<a type="button" class="btn btn-success" style="margin-bottom: 0;" ng-click="openModal('new')">添加新岗位</a>
+							</td>
+							<td style="width: 20%; text-align: center">
+								<span style="font-size: 120%;">岗位管理</span>
+							</td>
+							<td style="width: 40%;"></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end: 头栏 -->
+
+	<!-- start: 员工表格部分 -->
+	<div class="panel panel-default">
+		<div class="panel-body">
+
+			<script type="text/javascript">
+				jQuery(document).ready(function($)
+				{
+					$("#example-1").dataTable({
+						aLengthMenu: [
+							[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]
+						]
+					});
+				});
+			</script>
+
+			<table id="example-1" class="table table-striped table-bordered" cellspacing="0" width="100%">
+				<thead>
+				<tr>
+					<th>岗位ID</th>
+					<th>岗位名称</th>
+					<th>描述</th>
+					<th class="no-sorting">操作</th>
+				</tr>
+				</thead>
+
+				<tfoot>
+				<tr>
+					<th>岗位ID</th>
+					<th>岗位名称</th>
+					<th>描述</th>
+					<th>操作</th>
+				</tr>
+				</tfoot>
+
+				<tbody>
+				<tr>
+					<td>30001</td>
+					<td>项目经理</td>
+					<td>1.作为项目组的领导人和决策人，确立组员的分工职责。
+						2.制订项目工作计划...</td>
+					<td>
+						<a type="button" class="btn btn-white btn-sm btn-icon icon-left" ng-click="openModal('view');">详细信息</a>
+						<a type="button" class="btn btn-info btn-sm btn-icon icon-left" ng-click="openModal('edit');">编辑岗位</a>
+						<a type="button" class="btn btn-danger btn-sm btn-icon icon-left" ng-click="openModal('delete');">删除岗位</a>
+					</td>
+				</tr>
+				<tr>
+					<td>30001</td>
+					<td>项目经理</td>
+					<td>1.作为项目组的领导人和决策人，确立组员的分工职责。
+						2.制订项目工作计划...</td>
+					<td>
+						<a type="button" class="btn btn-white btn-sm btn-icon icon-left" ng-click="openModal('view');">详细信息</a>
+						<a type="button" class="btn btn-info btn-sm btn-icon icon-left" ng-click="openModal('edit');">编辑岗位</a>
+						<a type="button" class="btn btn-danger btn-sm btn-icon icon-left" ng-click="openModal('delete');">删除岗位</a>
+					</td>
+				</tr>
+				<tr>
+					<td>30001</td>
+					<td>项目经理</td>
+					<td>1.作为项目组的领导人和决策人，确立组员的分工职责。
+						2.制订项目工作计划...</td>
+					<td>
+						<a type="button" class="btn btn-white btn-sm btn-icon icon-left" ng-click="openModal('view');">详细信息</a>
+						<a type="button" class="btn btn-info btn-sm btn-icon icon-left" ng-click="openModal('edit');">编辑岗位</a>
+						<a type="button" class="btn btn-danger btn-sm btn-icon icon-left" ng-click="openModal('delete');">删除岗位</a>
+					</td>
+				</tr>
+				</tbody>
+			</table>
+
+		</div>
+	</div>
+	<!-- end: 员工表格部分 -->
+
+</div>

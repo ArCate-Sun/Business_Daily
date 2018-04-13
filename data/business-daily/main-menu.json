@@ -48,8 +48,16 @@
 		"title": "我的账户"
 	  },
 	  {
-		"link": "-/worker-account-manage",
+		"link": "-/account-management",
 		"title": "员工账户管理"
+	  },
+	  {
+		"link": "-/station-management",
+		"title": "岗位管理"
+	  },
+	  {
+		"link": "-/development-management",
+		"title": "部门管理"
 	  }
 	]
   }
